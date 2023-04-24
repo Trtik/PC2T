@@ -54,24 +54,4 @@ public class DbConnection {
 	        System.out.println("Error inserting movie: " + e.getMessage());
 	    }
 	}
-
-	public static void selectAll() {
-		
-		 try {
-		        Statement statement = conn.createStatement();
-		        ResultSet results = statement.executeQuery("SELECT * FROM hranyFilmy");
-		        while (results.next()) {
-		            System.out.println(results.getInt("id") + " " +
-		                               results.getString("title") + " " +
-		                               results.getString("director") + " " +
-		                               results.getInt("year") + " " +
-		                               results.getString("actors") + " " +
-		                               results.getInt("rating") + " " +
-		                               results.getString("ratingText"));
-		        }
-		    } 
-		 catch (SQLException e) {
-		        System.out.println("Error selecting all movies: " + e.getMessage());
-		    }
-	}
 }

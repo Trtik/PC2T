@@ -255,7 +255,7 @@ public class Test {
 								break;
 								
 							case 6:
-								System.out.println("Zadejte nazev filmu, ktery chcete upravit hodnoceni:");
+								System.out.println("Zadejte nazev filmu, kterymu chcete upravit hodnoceni:");
 								String title2 = scanner.nextLine();
 		
 								HranyFilm movieToEdit2 = null;
@@ -282,6 +282,7 @@ public class Test {
 								    case 1:
 								        System.out.println("Zadejte nove bodove hodnocení (1-5):");
 								        int newRating = scanner.nextInt();
+								        scanner.nextLine();
 								        movieToEdit2.setRating(newRating);
 								        break;
 								    case 2:
@@ -576,6 +577,7 @@ public class Test {
 								    case 1:
 								        System.out.println("Zadejte nove bodove hodnoceni (1-10):");
 								        int newRating = scanner.nextInt();
+								        scanner.nextLine();
 								        movieToEdit2.setRating(newRating);
 								        break;
 								    case 2:
@@ -724,18 +726,16 @@ public class Test {
 			        for (HranyFilm movie : hranyFilmList) {
 			            DbConnection.insertMovie(movie.getTitle(), movie.getDirector(), movie.getYear(), String.join(",", movie.getActors()), movie.getRating(), movie.getRatingText());
 			        }
-
-			        DbConnection.selectAll();
-			        
+		        
 			        DbConnection2.createTable2();
 			        for (AnimovanyFilm movie : animovanyFilmList) {
 			            DbConnection2.insertMovie2(movie.getTitle(), movie.getDirector(), movie.getYear(), String.join(",", movie.getAnimators()), movie.getRating(), movie.getRatingText(), movie.getAgeRating());
 			        }
 
-			        DbConnection2.selectAll2();
-			        
 			        dbConnection.closeConnection();
 		            
+			        System.out.println("Program byl ukoncen a databaze byly ulozeny do SQL databaze, ktera se opet nacte pri pristim spusteni programu. ");
+			        
 					run=false;
 					scanner.close();
 	                System.exit(0);

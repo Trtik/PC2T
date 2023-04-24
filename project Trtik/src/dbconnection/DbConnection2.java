@@ -1,11 +1,6 @@
 package dbconnection;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class DbConnection2 {
     private static Connection conn;
@@ -61,26 +56,5 @@ public class DbConnection2 {
 		catch (SQLException e) {
 	        System.out.println("Error inserting movie: " + e.getMessage());
 	    }
-	}
-
-	public static void selectAll2() {
-		
-		 try {
-		        Statement statement = conn.createStatement();
-		        ResultSet results = statement.executeQuery("SELECT * FROM animovanyFilmy");
-		        while (results.next()) {
-		            System.out.println(results.getInt("id") + " " +
-		                               results.getString("title") + " " +
-		                               results.getString("director") + " " +
-		                               results.getInt("year") + " " +
-		                               results.getString("animators") + " " +
-		                               results.getInt("rating") + " " +
-		                               results.getString("ratingText") + " " +
-		                               results.getInt("ageRating"));
-		        }
-		    } 
-		 catch (SQLException e) {
-		        System.out.println("Error selecting all movies: " + e.getMessage());
-		    }
 	}
 }
